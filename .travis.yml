@@ -1,0 +1,24 @@
+language: cpp
+compiler: g++
+notifications:
+  email: false
+sudo: required
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-6
+install:
+      - sudo apt-get -y update
+      - sudo apt-get -y install g++-6
+      - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cd ./3rdparty; wget --no-check-certificate http://cmake.org/files/v3.1/cmake-3.1.3-Linux-x86_64.tar.gz; tar -xzf cmake-3.1.3-Linux-x86_64.tar.gz; cd ..; fi
+      - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export CXX="g++-6" CC="gcc-6"; fi      
+      - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export PATH=$PWD/3rdparty/cmake-3.1.3-Linux-x86_64/bin:$PATH; fi
+script:   
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+after_success:
+   - find . -executable -type f -print | while read app; do printf "\n=========================================\nExecutable:\t$app\n=========================================\n"; "$app"; done
