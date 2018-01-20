@@ -10,7 +10,7 @@ addons:
     packages:
       - g++-6
 install:
-      - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cd ./3rdparty; wget --no-check-certificate http://cmake.org/files/v3.8/cmake-3.8.2-Linux-x86_64.tar.gz; tar -xzf cmake-3.8.2-Linux-x86_64.tar.gz; cd ..; fi
+      - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then mkdir 3rdparty; cd ./3rdparty; wget --no-check-certificate http://cmake.org/files/v3.8/cmake-3.8.2-Linux-x86_64.tar.gz; tar -xzf cmake-3.8.2-Linux-x86_64.tar.gz; cd ..; fi
       - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export CXX="g++-6" CC="gcc-6"; fi      
       - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export PATH=$PWD/3rdparty/cmake-3.8.2-Linux-x86_64/bin:$PATH; fi
 script:   
@@ -19,4 +19,4 @@ script:
   - cmake ..
   - make
 after_success:
-   - find . -executable -type f -print | while read app; do printf "\n=========================================\nExecutable:\t$app\n=========================================\n"; "$app"; done
+   - find . -maxdepth 1 -type f -executable ! -name cmake_install.cmake -newer Makefile -print | while read app; do printf "\n=========================================\nExecutable:\t$app\n=========================================\n"; "$app"; done
