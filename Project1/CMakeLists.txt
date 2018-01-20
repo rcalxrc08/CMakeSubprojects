@@ -1,7 +1,6 @@
-file(GLOB Project1_SRC
-        "src/*.cpp"
-        )
+file(GLOB Project1_SRC "src/*.cpp")
 include_directories(.)
 add_library(Project1 STATIC ${Project1_SRC})
 set_property(TARGET Project1 PROPERTY POSITION_INDEPENDENT_CODE ON)
-add_executable(Project1Exec ${Project1_SRC})
+add_executable(Project1Exec "main.cpp")
+target_link_libraries(Project1Exec PRIVATE Project1)

@@ -5,6 +5,6 @@
 
 int main()
 {
-	auto p=erf(1.0)*sin(1.0)*cos(1.0);
+	auto p=erf1(1.0)*sin1(1.0)*cos1(1.0);
 	std::cout<<"Result is "<<p<<std::endl;
 }
