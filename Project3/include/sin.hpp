@@ -3,5 +3,5 @@
 #include <cmath>
 
 
-double sin(double a);
+double sin1(double a);
 #endif

@@ -3,5 +3,5 @@
 #include <cmath>
 
 
-double erf(double a);
+double erf1(double a);
 #endif

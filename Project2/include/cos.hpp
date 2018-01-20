@@ -3,5 +3,5 @@
 #include <cmath>
 
 
-double cos(double a);
+double cos1(double a);
 #endif

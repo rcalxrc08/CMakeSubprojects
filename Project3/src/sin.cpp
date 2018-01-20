@@ -1,5 +1,5 @@
 #include "include/sin.hpp"
-double sin(double a) 
+double sin1(double a) 
 {
   return std::sin(a);
 }
