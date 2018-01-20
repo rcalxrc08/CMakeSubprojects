@@ -1,5 +1,5 @@
 file(GLOB Project1_SRC
-        "src/erf.cpp"
+        "src/*.cpp"
         )
 include_directories(.)
 add_library(Project1 STATIC ${Project1_SRC})

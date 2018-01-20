@@ -1,5 +1,5 @@
 file(GLOB Project3_SRC
-        "src/sin.cpp"
+        "src/*.cpp"
         )
 include_directories(.)
 add_library(Project3 STATIC ${Project3_SRC})
