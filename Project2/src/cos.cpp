@@ -7,5 +7,5 @@ double cos1(double a)
 
 double erf11(double a) 
 {
-  return std::cos(a)*erf1(0.0);
+  return cos1(a)*erf1(0.0);
 }
