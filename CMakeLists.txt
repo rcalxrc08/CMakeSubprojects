@@ -3,7 +3,9 @@ project(CmakeSubprojects)
 
 
 set(CMAKE_CXX_STANDARD 11)
-add_definitions(-fpermissive)
+IF(UNIX)
+  add_definitions(-fpermissive)
+ENDIF()
 
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 #####################
